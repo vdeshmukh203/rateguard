@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rateguard"
+version = "0.1.0"
+description = "Local rate limiter for LLM API calls"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Vaibhav Deshmukh"}]
+keywords = ["python", "rate-limit", "token-bucket", "llm"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/vdeshmukh203/rateguard"
+"Source" = "https://github.com/vdeshmukh203/rateguard"
+
+[tool.setuptools.packages.find]
+where = ["src"]
