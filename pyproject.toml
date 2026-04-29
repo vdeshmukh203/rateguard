@@ -10,16 +10,55 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [{name = "Vaibhav Deshmukh"}]
-keywords = ["python", "rate-limit", "token-bucket", "llm"]
+keywords = ["python", "rate-limit", "token-bucket", "sliding-window", "llm", "api"]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+    "Typing :: Typed",
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/vdeshmukh203/rateguard"
-"Source" = "https://github.com/vdeshmukh203/rateguard"
+"Homepage"    = "https://github.com/vdeshmukh203/rateguard"
+"Source"      = "https://github.com/vdeshmukh203/rateguard"
+"Bug Tracker" = "https://github.com/vdeshmukh203/rateguard/issues"
+
+[project.scripts]
+rateguard-gui = "rateguard.gui:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+    "mypy",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v"
+
+[tool.mypy]
+python_version  = "3.9"
+strict          = true
+files           = ["src/rateguard"]
+exclude         = ["src/rateguard/gui.py"]  # tkinter stubs not always available
+
+[tool.coverage.run]
+source = ["rateguard"]
+omit   = ["src/rateguard/gui.py", "src/rateguard/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under   = 90
