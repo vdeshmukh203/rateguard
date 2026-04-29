@@ -7,3 +7,8 @@ venv/
 build/
 dist/
 .DS_Store
+.coverage
+htmlcov/
+*.pyo
+*.pyd
+.mypy_cache/
