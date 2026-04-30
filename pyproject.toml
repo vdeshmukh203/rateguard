@@ -5,21 +5,50 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "rateguard"
 version = "0.1.0"
-description = "Local rate limiter for LLM API calls"
+description = "Thread-safe, pure-stdlib rate limiting primitives for Python LLM API clients"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [{name = "Vaibhav Deshmukh"}]
-keywords = ["python", "rate-limit", "token-bucket", "llm"]
+keywords = ["python", "rate-limit", "token-bucket", "sliding-window", "llm", "api"]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+    "Typing :: Typed",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+]
+
+[project.scripts]
+rateguard-gui = "rateguard.gui:main"
 
 [project.urls]
 "Homepage" = "https://github.com/vdeshmukh203/rateguard"
 "Source" = "https://github.com/vdeshmukh203/rateguard"
+"Bug Tracker" = "https://github.com/vdeshmukh203/rateguard/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["rateguard"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
