@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "rateguard: Thread-safe local rate limiting for LLM API clients in Python"
+version: 0.2.0
+date-released: "2026-05-07"
+license: MIT
+url: "https://github.com/vdeshmukh203/rateguard"
+repository-code: "https://github.com/vdeshmukh203/rateguard"
+abstract: >
+  rateguard provides thread-safe token-bucket and sliding-window rate limiters
+  for Python applications that call large language model APIs. It uses only the
+  standard library and exposes a wait-time API compatible with both synchronous
+  and asyncio code bases.
+keywords:
+  - rate limiting
+  - token bucket
+  - sliding window
+  - large language models
+  - LLM
+  - API
+  - Python
+  - concurrency
+authors:
+  - family-names: Deshmukh
+    given-names: Vaibhav

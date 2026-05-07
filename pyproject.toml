@@ -4,22 +4,45 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rateguard"
-version = "0.1.0"
-description = "Local rate limiter for LLM API calls"
+version = "0.2.0"
+description = "Thread-safe local rate limiter for LLM API calls"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [{name = "Vaibhav Deshmukh"}]
-keywords = ["python", "rate-limit", "token-bucket", "llm"]
+keywords = ["python", "rate-limit", "token-bucket", "sliding-window", "llm", "api"]
 classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+    "Typing :: Typed",
 ]
 
+[project.optional-dependencies]
+test = ["pytest>=7"]
+gui  = []   # tkinter is part of the standard library; no extra packages needed
+
+[project.scripts]
+rateguard-dashboard = "rateguard.gui:run_dashboard"
+
 [project.urls]
-"Homepage" = "https://github.com/vdeshmukh203/rateguard"
-"Source" = "https://github.com/vdeshmukh203/rateguard"
+"Homepage"     = "https://github.com/vdeshmukh203/rateguard"
+"Source"       = "https://github.com/vdeshmukh203/rateguard"
+"Issue Tracker" = "https://github.com/vdeshmukh203/rateguard/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+rateguard = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
