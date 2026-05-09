@@ -9,17 +9,64 @@ description = "Local rate limiter for LLM API calls"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
-authors = [{name = "Vaibhav Deshmukh"}]
-keywords = ["python", "rate-limit", "token-bucket", "llm"]
+authors = [{name = "Vaibhav A. Deshmukh"}]
+keywords = ["python", "rate-limit", "token-bucket", "sliding-window", "llm"]
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers",
+    "Typing :: Typed",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov>=4",
+    "ruff>=0.4",
+    "mypy>=1.9",
+]
+
+[project.scripts]
+rateguard-dashboard = "rateguard._gui:main"
 
 [project.urls]
 "Homepage" = "https://github.com/vdeshmukh203/rateguard"
 "Source" = "https://github.com/vdeshmukh203/rateguard"
+"Bug Tracker" = "https://github.com/vdeshmukh203/rateguard/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+rateguard = ["py.typed"]
+
+[tool.pytest.ini_options]
+addopts = "--tb=short"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["rateguard"]
+omit = ["*/_gui.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["B008"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+files = ["src/rateguard/__init__.py"]

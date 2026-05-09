@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use rateguard in your research, please cite it as below."
+type: software
+title: "rateguard: A Thread-Safe Rate Limiter for LLM API Calls in Python"
+version: "0.1.0"
+date-released: "2026-05-09"
+license: MIT
+repository-code: "https://github.com/vdeshmukh203/rateguard"
+url: "https://github.com/vdeshmukh203/rateguard"
+abstract: >
+  rateguard is a pure-Python, zero-dependency library that provides
+  thread-safe token-bucket and sliding-window rate limiters for
+  applications that call large language model (LLM) APIs.
+keywords:
+  - rate limiting
+  - LLM
+  - API throttling
+  - token bucket
+  - sliding window
+  - Python
+authors:
+  - family-names: Deshmukh
+    given-names: Vaibhav A.
+    alias: vdeshmukh203
